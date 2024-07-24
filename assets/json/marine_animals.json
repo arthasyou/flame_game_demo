@@ -4,127 +4,127 @@
       "name": "1",
       "idleFrameAnimationAmount": 12,
       "idlePerRow": null,
-      "idleSize": [24, 70],
+      "idleSize": [24.0, 70.0],
       "deadFrameAnimationAmount": 5,
       "deadPerRow": null,
-      "deadSize": [27, 74]
+      "deadSize": [27.0, 74.0]
     },
     {
       "name": "2",
       "idleFrameAnimationAmount": 16,
       "idlePerRow": null,
-      "idleSize": [24, 54],
+      "idleSize": [24.0, 54.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [28, 54]
+      "deadSize": [28.0, 54.0]
     },
     {
       "name": "3",
       "idleFrameAnimationAmount": 24,
       "idlePerRow": null,
-      "idleSize": [48, 78],
+      "idleSize": [48.0, 78.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [47, 78]
+      "deadSize": [47.0, 78.0]
     },
     {
       "name": "4",
       "idleFrameAnimationAmount": 24,
       "idlePerRow": null,
-      "idleSize": [64, 100],
+      "idleSize": [64.0, 100.0],
       "deadFrameAnimationAmount": 10,
       "deadPerRow": null,
-      "deadSize": [62, 105]
+      "deadSize": [62.0, 105.0]
     },
     {
       "name": "5",
       "idleFrameAnimationAmount": 24,
       "idlePerRow": null,
-      "idleSize": [45, 124],
+      "idleSize": [45.0, 124.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [50, 124]
+      "deadSize": [50.0, 124.0]
     },
     {
       "name": "6",
       "idleFrameAnimationAmount": 25,
       "idlePerRow": null,
-      "idleSize": [72, 105],
+      "idleSize": [72.0, 105.0],
       "deadFrameAnimationAmount": 6,
       "deadPerRow": null,
-      "deadSize": [76, 105]
+      "deadSize": [76.0, 105.0]
     },
     {
       "name": "7",
       "idleFrameAnimationAmount": 32,
       "idlePerRow": 18,
-      "idleSize": [58, 120],
+      "idleSize": [58.0, 120.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [50, 124]
+      "deadSize": [50.0, 124.0]
     },
     {
       "name": "8",
       "idleFrameAnimationAmount": 20,
       "idlePerRow": null,
-      "idleSize": [74, 132],
+      "idleSize": [74.0, 132.0],
       "deadFrameAnimationAmount": 6,
       "deadPerRow": null,
-      "deadSize": [71, 132]
+      "deadSize": [71.0, 132.0]
     },
     {
       "name": "9",
       "idleFrameAnimationAmount": 24,
       "idlePerRow": null,
-      "idleSize": [70, 160],
+      "idleSize": [70.0, 160.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [90, 160]
+      "deadSize": [90.0, 160.0]
     },
     {
       "name": "10",
       "idleFrameAnimationAmount": 16,
       "idlePerRow": 8,
-      "idleSize": [145, 135],
+      "idleSize": [145.0, 135.0],
       "deadFrameAnimationAmount": 7,
       "deadPerRow": null,
-      "deadSize": [108, 135]
+      "deadSize": [108.0, 135.0]
     },
     {
       "name": "11",
       "idleFrameAnimationAmount": 24,
       "idlePerRow": null,
-      "idleSize": [84, 190],
+      "idleSize": [84.0, 190.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [200, 190]
+      "deadSize": [200.0, 190.0]
     },
     {
       "name": "12",
       "idleFrameAnimationAmount": 12,
       "idlePerRow": null,
-      "idleSize": [164, 158],
+      "idleSize": [164.0, 158.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [158, 158]
+      "deadSize": [158.0, 158.0]
     },
     {
       "name": "13",
       "idleFrameAnimationAmount": 24,
       "idlePerRow": 12,
-      "idleSize": [88, 220],
+      "idleSize": [88.0, 220.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [92, 220]
+      "deadSize": [92.0, 220.0]
     },
     {
       "name": "14",
       "idleFrameAnimationAmount": 24,
       "idlePerRow": 12,
-      "idleSize": [140, 300],
+      "idleSize": [140.0, 300.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [144, 300]
+      "deadSize": [144.0, 300.0]
     }
   ]
 }

@@ -4,23 +4,12 @@ import 'package:flame/components.dart';
 import 'package:flame_game_demo/game/game_root.dart';
 import 'package:flame_game_demo/utils/assets_util.dart';
 
-import '../../gen/assets.gen.dart';
-
 enum AnimalState { idle, dead }
+
+enum AnimalDircetion { up, down, left, right }
 
 class MarineAnimals extends SpriteAnimationGroupComponent
     with HasGameRef<GameRoot> {
-  late final SpriteAnimation _idleAnimation;
-  late final SpriteAnimation _deadAnimation;
-
-  final String name;
-  final int idleFrameAnimationAmount;
-  final Vector2 idleSize;
-  final int deadFrameAnimationAmount;
-  final Vector2 deadSize;
-  final int? idelPerRow;
-  final int? deadPerRow;
-
   MarineAnimals({
     required this.name,
     required this.idleFrameAnimationAmount,
@@ -31,11 +20,34 @@ class MarineAnimals extends SpriteAnimationGroupComponent
     this.deadPerRow,
   });
 
+  final String name;
+  final int idleFrameAnimationAmount;
+  final Vector2 idleSize;
+  final int deadFrameAnimationAmount;
+  final Vector2 deadSize;
+  final int? idelPerRow;
+  final int? deadPerRow;
+
+  // Animation
+  late final SpriteAnimation _idleAnimation;
+  late final SpriteAnimation _deadAnimation;
+
+  // Direction
+  AnimalDircetion animalDircetion = AnimalDircetion.up;
+  double moveSpeed = 0;
+  Vector2 velocity = Vector2.zero();
+
   @override
   FutureOr<void> onLoad() {
     _loadAllAnimations();
     return super.onLoad();
   }
+
+  // @override
+  // void update(double dt) {
+  //   // _updateMovement(dt);
+  //   super.update(dt);
+  // }
 
   void _loadAllAnimations() {
     _idleAnimation = _spriteAnimation(
@@ -82,5 +94,21 @@ class MarineAnimals extends SpriteAnimationGroupComponent
         amountPerRow: perRow,
       ),
     );
+  }
+
+  void _updateMovement(double dt) {
+    double dirY = 0.0;
+    switch (animalDircetion) {
+      case AnimalDircetion.up:
+        dirY -= moveSpeed;
+        break;
+      case AnimalDircetion.down:
+        dirY += moveSpeed;
+        break;
+      default:
+    }
+
+    velocity = Vector2(0.0, dirY);
+    position += velocity * dt;
   }
 }

@@ -17,6 +17,16 @@ class $AssetsImagesGen {
       const $AssetsImagesMarineAnimalsGen();
 }
 
+class $AssetsJsonGen {
+  const $AssetsJsonGen();
+
+  /// File path: assets/json/marine_animals.json
+  String get marineAnimals => 'assets/json/marine_animals.json';
+
+  /// List of all assets
+  List<String> get values => [marineAnimals];
+}
+
 class $AssetsImagesMarineAnimalsGen {
   const $AssetsImagesMarineAnimalsGen();
 
@@ -291,6 +301,7 @@ class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonGen json = $AssetsJsonGen();
 }
 
 class AssetGenImage {

@@ -1,5 +1,6 @@
+import 'gen/assets.gen.dart';
 import 'provider/animal_config_provider.dart';
 
 Future<void> boot() async {
-  await AnimalConfig.loadConfigFromFile('assets/json/marine_animals.json');
+  await AnimalConfig.loadConfigFromFile(Assets.json.marineAnimals);
 }

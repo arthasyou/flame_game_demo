@@ -24,17 +24,7 @@ class _GamePageState extends ConsumerState<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: FittedBox(
-            child: SizedBox(
-              width: gameWidth,
-              height: gameHeight,
-              child: GameWidget(game: game),
-            ),
-          ),
-        ),
-      ),
+      body: GameWidget(game: game),
     );
   }
 }

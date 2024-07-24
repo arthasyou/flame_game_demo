@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame_game_demo/constants.dart';
 import 'game_world.dart';
 
 class GameRoot extends FlameGame {
@@ -25,8 +26,8 @@ class GameRoot extends FlameGame {
   void _loadWorld() {
     cam = CameraComponent.withFixedResolution(
       world: world,
-      width: 640,
-      height: 360,
+      width: gameWidth,
+      height: gameHeight,
     );
     cam.viewfinder.anchor = Anchor.center;
 

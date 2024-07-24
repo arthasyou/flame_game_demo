@@ -22,9 +22,9 @@ class GameWorld extends World with HasGameRef<GameRoot> {
     // MarineAnimals fish3 = AssetsUtil.create_animal('3');
     // add(fish3);
 
-    MarineAnimals fish4 = AssetsUtil.create_animal('10');
+    MarineAnimals fish4 = AssetsUtil.create_animal('10')
+      ..position = Vector2(0, 400);
     add(fish4);
-    fish4.position = Vector2(20, 30);
 
     return super.onLoad();
   }
