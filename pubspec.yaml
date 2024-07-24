@@ -7,10 +7,47 @@ version: 1.0.0+1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
+
 dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
   flame: ^1.18.0
   flame_audio: ^2.10.2
   flame_riverpod: ^5.4.2
   hooks_riverpod: ^2.5.1
+  xml: ^6.5.0
+  lints: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+ 
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/json/
+    - assets/images/marine_animals/1/
+    - assets/images/marine_animals/2/
+    - assets/images/marine_animals/3/
+    - assets/images/marine_animals/4/
+    - assets/images/marine_animals/5/
+    - assets/images/marine_animals/6/
+    - assets/images/marine_animals/7/
+    - assets/images/marine_animals/8/
+    - assets/images/marine_animals/9/
+    - assets/images/marine_animals/10/
+    - assets/images/marine_animals/11/
+    - assets/images/marine_animals/12/
+    - assets/images/marine_animals/13/
+    - assets/images/marine_animals/14/
 
 
+flutter_gen:
+  assets:
+    enabled: true
+    # outputs:
+    #   package_parameter_enabled: true

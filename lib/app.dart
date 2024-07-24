@@ -17,7 +17,7 @@ class _GameAppState extends State<GameApp> {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: GamePage(),
+      home: const GamePage(),
     );
   }
 }

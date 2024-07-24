@@ -1,0 +1,130 @@
+{
+  "marine_animals": [
+    {
+      "name": "1",
+      "idleFrameAnimationAmount": 12,
+      "idlePerRow": null,
+      "idleSize": [24, 70],
+      "deadFrameAnimationAmount": 5,
+      "deadPerRow": null,
+      "deadSize": [27, 74]
+    },
+    {
+      "name": "2",
+      "idleFrameAnimationAmount": 16,
+      "idlePerRow": null,
+      "idleSize": [24, 54],
+      "deadFrameAnimationAmount": 3,
+      "deadPerRow": null,
+      "deadSize": [28, 54]
+    },
+    {
+      "name": "3",
+      "idleFrameAnimationAmount": 24,
+      "idlePerRow": null,
+      "idleSize": [48, 78],
+      "deadFrameAnimationAmount": 3,
+      "deadPerRow": null,
+      "deadSize": [47, 78]
+    },
+    {
+      "name": "4",
+      "idleFrameAnimationAmount": 24,
+      "idlePerRow": null,
+      "idleSize": [64, 100],
+      "deadFrameAnimationAmount": 10,
+      "deadPerRow": null,
+      "deadSize": [62, 105]
+    },
+    {
+      "name": "5",
+      "idleFrameAnimationAmount": 24,
+      "idlePerRow": null,
+      "idleSize": [45, 124],
+      "deadFrameAnimationAmount": 3,
+      "deadPerRow": null,
+      "deadSize": [50, 124]
+    },
+    {
+      "name": "6",
+      "idleFrameAnimationAmount": 25,
+      "idlePerRow": null,
+      "idleSize": [72, 105],
+      "deadFrameAnimationAmount": 6,
+      "deadPerRow": null,
+      "deadSize": [76, 105]
+    },
+    {
+      "name": "7",
+      "idleFrameAnimationAmount": 32,
+      "idlePerRow": 18,
+      "idleSize": [58, 120],
+      "deadFrameAnimationAmount": 3,
+      "deadPerRow": null,
+      "deadSize": [50, 124]
+    },
+    {
+      "name": "8",
+      "idleFrameAnimationAmount": 20,
+      "idlePerRow": null,
+      "idleSize": [74, 132],
+      "deadFrameAnimationAmount": 6,
+      "deadPerRow": null,
+      "deadSize": [71, 132]
+    },
+    {
+      "name": "9",
+      "idleFrameAnimationAmount": 24,
+      "idlePerRow": null,
+      "idleSize": [70, 160],
+      "deadFrameAnimationAmount": 4,
+      "deadPerRow": null,
+      "deadSize": [90, 160]
+    },
+    {
+      "name": "10",
+      "idleFrameAnimationAmount": 16,
+      "idlePerRow": 8,
+      "idleSize": [145, 135],
+      "deadFrameAnimationAmount": 7,
+      "deadPerRow": null,
+      "deadSize": [108, 135]
+    },
+    {
+      "name": "11",
+      "idleFrameAnimationAmount": 24,
+      "idlePerRow": null,
+      "idleSize": [84, 190],
+      "deadFrameAnimationAmount": 4,
+      "deadPerRow": null,
+      "deadSize": [200, 190]
+    },
+    {
+      "name": "12",
+      "idleFrameAnimationAmount": 12,
+      "idlePerRow": null,
+      "idleSize": [164, 158],
+      "deadFrameAnimationAmount": 4,
+      "deadPerRow": null,
+      "deadSize": [158, 158]
+    },
+    {
+      "name": "13",
+      "idleFrameAnimationAmount": 24,
+      "idlePerRow": 12,
+      "idleSize": [88, 220],
+      "deadFrameAnimationAmount": 4,
+      "deadPerRow": null,
+      "deadSize": [92, 220]
+    },
+    {
+      "name": "14",
+      "idleFrameAnimationAmount": 24,
+      "idlePerRow": 12,
+      "idleSize": [140, 300],
+      "deadFrameAnimationAmount": 4,
+      "deadPerRow": null,
+      "deadSize": [144, 300]
+    }
+  ]
+}
