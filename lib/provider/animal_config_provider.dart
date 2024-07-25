@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/services.dart';
-
 import '../models/animal_config_model.dart';
 
 class AnimalConfig {

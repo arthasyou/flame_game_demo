@@ -29,7 +29,7 @@ class GameRoot extends FlameGame {
       width: gameWidth,
       height: gameHeight,
     );
-    cam.viewfinder.anchor = Anchor.center;
+    cam.viewfinder.anchor = Anchor.topLeft;
 
     addAll([cam, world]);
   }
