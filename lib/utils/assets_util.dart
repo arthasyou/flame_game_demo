@@ -19,6 +19,7 @@ class AssetsUtil {
       deadSize: Vector2(cfg.deadSize[0], cfg.deadSize[1]),
       idelPerRow: cfg.idlePerRow,
       deadPerRow: cfg.deadPerRow,
+      moveSpeed: cfg.moveSpeed,
     );
   }
 }

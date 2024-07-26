@@ -7,7 +7,8 @@
       "idleSize": [24.0, 70.0],
       "deadFrameAnimationAmount": 5,
       "deadPerRow": null,
-      "deadSize": [27.0, 74.0]
+      "deadSize": [27.0, 74.0],
+      "moveSpeed": 300.0
     },
     {
       "name": "2",
@@ -16,7 +17,8 @@
       "idleSize": [24.0, 54.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [28.0, 54.0]
+      "deadSize": [28.0, 54.0],
+      "moveSpeed": 280.0
     },
     {
       "name": "3",
@@ -25,7 +27,8 @@
       "idleSize": [48.0, 78.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [47.0, 78.0]
+      "deadSize": [47.0, 78.0],
+      "moveSpeed": 260.0
     },
     {
       "name": "4",
@@ -34,7 +37,8 @@
       "idleSize": [64.0, 100.0],
       "deadFrameAnimationAmount": 10,
       "deadPerRow": null,
-      "deadSize": [62.0, 105.0]
+      "deadSize": [62.0, 105.0],
+      "moveSpeed": 230.0
     },
     {
       "name": "5",
@@ -43,7 +47,8 @@
       "idleSize": [45.0, 124.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [50.0, 124.0]
+      "deadSize": [50.0, 124.0],
+      "moveSpeed": 200.0
     },
     {
       "name": "6",
@@ -52,7 +57,8 @@
       "idleSize": [72.0, 105.0],
       "deadFrameAnimationAmount": 6,
       "deadPerRow": null,
-      "deadSize": [76.0, 105.0]
+      "deadSize": [76.0, 105.0],
+      "moveSpeed": 170.0
     },
     {
       "name": "7",
@@ -61,7 +67,8 @@
       "idleSize": [58.0, 120.0],
       "deadFrameAnimationAmount": 3,
       "deadPerRow": null,
-      "deadSize": [50.0, 124.0]
+      "deadSize": [50.0, 124.0],
+      "moveSpeed": 150.0
     },
     {
       "name": "8",
@@ -70,7 +77,8 @@
       "idleSize": [74.0, 132.0],
       "deadFrameAnimationAmount": 6,
       "deadPerRow": null,
-      "deadSize": [71.0, 132.0]
+      "deadSize": [71.0, 132.0],
+      "moveSpeed": 130.0
     },
     {
       "name": "9",
@@ -79,7 +87,8 @@
       "idleSize": [70.0, 160.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [90.0, 160.0]
+      "deadSize": [90.0, 160.0],
+      "moveSpeed": 100.0
     },
     {
       "name": "10",
@@ -88,7 +97,8 @@
       "idleSize": [145.0, 135.0],
       "deadFrameAnimationAmount": 7,
       "deadPerRow": null,
-      "deadSize": [108.0, 135.0]
+      "deadSize": [108.0, 135.0],
+      "moveSpeed": 80.0
     },
     {
       "name": "11",
@@ -97,7 +107,8 @@
       "idleSize": [84.0, 190.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [200.0, 190.0]
+      "deadSize": [200.0, 190.0],
+      "moveSpeed": 70.0
     },
     {
       "name": "12",
@@ -106,7 +117,8 @@
       "idleSize": [164.0, 158.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [158.0, 158.0]
+      "deadSize": [158.0, 158.0],
+      "moveSpeed": 50.0
     },
     {
       "name": "13",
@@ -115,7 +127,8 @@
       "idleSize": [88.0, 220.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [92.0, 220.0]
+      "deadSize": [92.0, 220.0],
+      "moveSpeed": 30.0
     },
     {
       "name": "14",
@@ -124,7 +137,8 @@
       "idleSize": [140.0, 300.0],
       "deadFrameAnimationAmount": 4,
       "deadPerRow": null,
-      "deadSize": [144.0, 300.0]
+      "deadSize": [144.0, 300.0],
+      "moveSpeed": 20.0
     }
   ]
 }

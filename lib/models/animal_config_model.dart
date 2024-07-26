@@ -6,6 +6,7 @@ class MarineAnimalConfigModel {
   final List<double> deadSize;
   final int? idlePerRow;
   final int? deadPerRow;
+  final double moveSpeed;
 
   MarineAnimalConfigModel({
     required this.name,
@@ -15,6 +16,7 @@ class MarineAnimalConfigModel {
     required this.deadSize,
     this.idlePerRow,
     this.deadPerRow,
+    required this.moveSpeed,
   });
 
   factory MarineAnimalConfigModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class MarineAnimalConfigModel {
       deadFrameAnimationAmount: json['deadFrameAnimationAmount'],
       deadSize: List<double>.from(json['deadSize']),
       deadPerRow: json['deadPerRow'],
+      moveSpeed: json['moveSpeed'],
     );
   }
 
@@ -38,6 +41,7 @@ class MarineAnimalConfigModel {
       'deadFrameAnimationAmount': deadFrameAnimationAmount,
       'deadSize': deadSize,
       'deadPerRow': deadPerRow,
+      'moveSpeed': moveSpeed,
     };
   }
 }

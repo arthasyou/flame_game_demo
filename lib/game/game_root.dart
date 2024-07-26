@@ -1,13 +1,10 @@
 import 'dart:async';
-import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame_game_demo/constants.dart';
 import 'game_world.dart';
 
 class GameRoot extends FlameGame {
-  final Images customImages = Images(prefix: "");
-
   // with HorizontalDragDetector, KeyboardEvents, HasCollisionDetection {
   // GameRoot() : super();
 
@@ -16,7 +13,8 @@ class GameRoot extends FlameGame {
 
   @override
   FutureOr<void> onLoad() async {
-    await customImages.loadAllImages();
+    images.prefix = '';
+    await images.loadAllImages();
 
     _loadWorld();
 

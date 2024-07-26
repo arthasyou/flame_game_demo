@@ -94,8 +94,7 @@ class MarineAnimals extends SpriteAnimationGroupComponent
     int? perRow,
   ) async {
     return SpriteAnimation.fromFrameData(
-      game.customImages
-          .fromCache(AssetsUtil.get_animal_image_path(name, state)),
+      game.images.fromCache(AssetsUtil.get_animal_image_path(name, state)),
       SpriteAnimationData.sequenced(
         amount: amount,
         stepTime: stepTime,

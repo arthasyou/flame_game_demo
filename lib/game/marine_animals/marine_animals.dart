@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flame/components.dart';
-import 'package:flame/game.dart';
 import 'package:flame_game_demo/game/game_root.dart';
 import 'package:flame_game_demo/utils/assets_util.dart';
 
@@ -17,7 +16,7 @@ class MarineAnimals extends SpriteAnimationGroupComponent
     required this.deadSize,
     this.idelPerRow,
     this.deadPerRow,
-    this.moveSpeed = 30,
+    required this.moveSpeed,
   });
 
   final String name;
@@ -35,9 +34,18 @@ class MarineAnimals extends SpriteAnimationGroupComponent
 
   // Direction
   Vector2 velocity = Vector2.zero();
-  Vector2 targetPoint = Vector2.zero();
+
+  // bezier_curves
+  double bezierCurvesRate = 100; // 数字越大分割越细
   Vector2 controlPoint = Vector2.zero();
+  Vector2 targetPoint = Vector2.zero();
+  Vector2 startPoint = Vector2.zero();
   double t = 0.0;
+  Vector2 tempPoint = Vector2.zero();
+  bool _isEndOfTemp = true;
+  Vector2 direction = Vector2.zero();
+
+  // others
   final Random _random = Random();
   late Timer _directionChangeTimer;
 
@@ -45,7 +53,6 @@ class MarineAnimals extends SpriteAnimationGroupComponent
   Future<void> onLoad() async {
     await _loadAllAnimations();
     _setRandomTarget();
-    _startDirectionChangeTimer();
     return super.onLoad();
   }
 
@@ -97,8 +104,7 @@ class MarineAnimals extends SpriteAnimationGroupComponent
     int? perRow,
   ) async {
     return SpriteAnimation.fromFrameData(
-      game.customImages
-          .fromCache(AssetsUtil.get_animal_image_path(name, state)),
+      game.images.fromCache(AssetsUtil.get_animal_image_path(name, state)),
       SpriteAnimationData.sequenced(
         amount: amount,
         stepTime: stepTime,
@@ -109,21 +115,36 @@ class MarineAnimals extends SpriteAnimationGroupComponent
   }
 
   void _updateMovement(double dt) {
-    t += dt * moveSpeed / 100; // Adjust speed here
     if (t > 1.0) {
       t = 1.0;
+      _moving(dt);
       _setRandomTarget();
+    } else {
+      _moving(dt);
+    }
+  }
+
+  void _moving(double dt) {
+    if (_isEndOfTemp) {
+      t += dt * moveSpeed / bezierCurvesRate; // Adjust speed here
+      tempPoint =
+          _calculateBezierPoint(t, startPoint, controlPoint, targetPoint);
+      velocity = tempPoint - position;
+      direction = velocity.normalized();
+      _isEndOfTemp = false;
     }
 
-    // Calculate position on the bezier curve
-    final newPosition =
-        _calculateBezierPoint(t, position, controlPoint, targetPoint);
-    velocity = newPosition - position;
-    position = newPosition;
+    start_moving(dt);
+  }
 
-    // Update angle to match the direction of movement
+  void start_moving(double dt) {
+    position += direction * moveSpeed * dt;
     if (velocity.length > 0) {
       angle = atan2(velocity.y, velocity.x) + pi / 2;
+    }
+    if ((position - tempPoint).length <= moveSpeed * dt) {
+      position = tempPoint;
+      _isEndOfTemp = true;
     }
   }
 
@@ -132,7 +153,8 @@ class MarineAnimals extends SpriteAnimationGroupComponent
     final tt = t * t;
     final uu = u * u;
 
-    final p = p0 * uu; // u^2 * P0
+    Vector2 p = Vector2.zero();
+    p = p0 * uu; // u^2 * P0
     p.add(p1 * (2 * u * t)); // 2 * u * t * P1
     p.add(p2 * tt); // t^2 * P2
 
@@ -140,26 +162,22 @@ class MarineAnimals extends SpriteAnimationGroupComponent
   }
 
   void _setRandomTarget() {
+    startPoint = position;
     // Generate a random target point within the game bounds
     final targetX = _random.nextDouble() * gameRef.size.x;
     final targetY = _random.nextDouble() * gameRef.size.y;
     targetPoint = Vector2(targetX, targetY);
+    // targetPoint = Vector2(1920, 0);
 
     // Generate a random control point for the bezier curve
     final controlX = _random.nextDouble() * gameRef.size.x;
     final controlY = _random.nextDouble() * gameRef.size.y;
     controlPoint = Vector2(controlX, controlY);
+    // controlPoint = Vector2(960, 500);
+
+    // print(
+    //     "start: $startPoint, controlPoint: $controlPoint, targetPoint$targetPoint");
 
     t = 0.0; // Reset t for the new curve
-  }
-
-  void _startDirectionChangeTimer() {
-    // Change direction every 1-3 seconds randomly
-    _directionChangeTimer = Timer(
-      _random.nextInt(10) + 1,
-      onTick: _setRandomTarget,
-      repeat: true,
-    );
-    _directionChangeTimer.start();
   }
 }
