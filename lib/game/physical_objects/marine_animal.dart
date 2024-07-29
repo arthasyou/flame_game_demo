@@ -2,13 +2,15 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame_game_demo/game/game_root.dart';
+import 'package:flame_game_demo/utils/Bezier_Curves.dart';
 import 'package:flame_game_demo/utils/assets_util.dart';
+import 'package:flame_game_demo/utils/position_util.dart';
 
 enum AnimalState { idle, dead }
 
-class MarineAnimals extends SpriteAnimationGroupComponent
+class MarineAnimal extends SpriteAnimationGroupComponent
     with HasGameRef<GameRoot> {
-  MarineAnimals({
+  MarineAnimal({
     required this.name,
     required this.idleFrameAnimationAmount,
     required this.idleSize,
@@ -16,7 +18,7 @@ class MarineAnimals extends SpriteAnimationGroupComponent
     required this.deadSize,
     this.idelPerRow,
     this.deadPerRow,
-    this.moveSpeed = 30,
+    required this.moveSpeed,
   });
 
   final String name;
@@ -34,21 +36,31 @@ class MarineAnimals extends SpriteAnimationGroupComponent
 
   // Direction
   Vector2 velocity = Vector2.zero();
+
+  // bezier_curves
+  double bezierCurvesRate = 100; // 数字越大分割越细
+  Vector2 controlPoint = Vector2.zero();
+  Vector2 targetPoint = Vector2.zero();
+  Vector2 startPoint = Vector2.zero();
+  double t = 0.0;
+  Vector2 tempPoint = Vector2.zero();
+  bool _isEndOfTemp = true;
+  Vector2 direction = Vector2.zero();
+
+  // others
   final Random _random = Random();
   late Timer _directionChangeTimer;
 
   @override
   Future<void> onLoad() async {
+    await super.onLoad;
     await _loadAllAnimations();
-    _setRandomVelocity();
-    _startDirectionChangeTimer();
-    return super.onLoad();
+    _setRandomTarget();
   }
 
   @override
   void update(double dt) {
     _updateMovement(dt);
-    _directionChangeTimer.update(dt);
     super.update(dt);
   }
 
@@ -105,33 +117,52 @@ class MarineAnimals extends SpriteAnimationGroupComponent
   }
 
   void _updateMovement(double dt) {
-    // print("velocity: $velocity");
-    // Update position
-    position += velocity * dt;
-
-    // Update angle to match the direction of movement
-    if (velocity.length > 0) {
-      angle = atan2(velocity.y, velocity.x) + pi / 2;
+    if (t > 1.0) {
+      t = 1.0;
+      _moving(dt);
+      _setRandomTarget();
+    } else {
+      _moving(dt);
     }
   }
 
-  void _setRandomVelocity() {
-    // Generate a random direction and set the velocity
-    double randomAngle = _random.nextDouble() * 2 * pi;
-    velocity = Vector2(cos(randomAngle), sin(randomAngle)) * moveSpeed;
+  void _moving(double dt) {
+    if (_isEndOfTemp) {
+      t += dt * moveSpeed / bezierCurvesRate; // Adjust speed here
+      tempPoint = BezierCurves.calculateBezierPoint(
+          t, startPoint, controlPoint, targetPoint);
+      velocity = tempPoint - position;
+      direction = velocity.normalized();
+      _isEndOfTemp = false;
+    }
+
+    start_moving(dt);
   }
 
-  void _startDirectionChangeTimer() {
-    // Change direction every 1-3 seconds randomly
-    _directionChangeTimer = Timer(
-      _random.nextInt(10) + 1,
-      onTick: _changeDirection,
-      repeat: true,
-    );
-    _directionChangeTimer.start();
+  void start_moving(double dt) {
+    position += direction * moveSpeed * dt;
+    if (velocity.length > 0) {
+      angle = PositionUtil.get_angle_from_top(velocity);
+    }
+    if ((position - tempPoint).length <= moveSpeed * dt) {
+      position = tempPoint;
+      _isEndOfTemp = true;
+    }
   }
 
-  void _changeDirection() {
-    _setRandomVelocity();
+  void _setRandomTarget() {
+    startPoint = position;
+
+    // Generate a random target point within the game bounds
+    final targetX = _random.nextDouble() * gameRef.size.x - gameRef.size.x / 2;
+    final targetY = _random.nextDouble() * gameRef.size.y - gameRef.size.y / 2;
+    targetPoint = Vector2(targetX, targetY);
+
+    // Generate a random control point for the bezier curve
+    final controlX = _random.nextDouble() * gameRef.size.x - gameRef.size.x / 2;
+    final controlY = _random.nextDouble() * gameRef.size.y - gameRef.size.y / 2;
+    controlPoint = Vector2(controlX, controlY);
+
+    t = 0.0; // Reset t for the new curve
   }
 }

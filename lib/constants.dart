@@ -1,6 +1,9 @@
 const gameWidth = 1920.0;
 const gameHeight = 1080.0;
 
+// const gameWidth = 920.0;
+// const gameHeight = 580.0;
+
 const obstacleSize = 216.0;
 const extendedHeight = gameHeight * 4;
 

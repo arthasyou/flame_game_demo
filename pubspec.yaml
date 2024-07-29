@@ -45,6 +45,7 @@ flutter:
     - assets/images/marine_animals/12/
     - assets/images/marine_animals/13/
     - assets/images/marine_animals/14/
+    - assets/images/demo/
 
 
 flutter_gen:

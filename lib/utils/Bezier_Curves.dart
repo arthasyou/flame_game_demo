@@ -1,6 +1,8 @@
 import 'package:flame/extensions.dart';
 
 class BezierCurves {
+  static quadraticCurve() {}
+
   static Vector2 calculateBezierPoint(
       double t, Vector2 p0, Vector2 p1, Vector2 p2) {
     final u = 1 - t;

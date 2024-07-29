@@ -12,6 +12,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/demo
+  $AssetsImagesDemoGen get demo => const $AssetsImagesDemoGen();
+
   /// Directory path: assets/images/marine_animals
   $AssetsImagesMarineAnimalsGen get marineAnimals =>
       const $AssetsImagesMarineAnimalsGen();
@@ -25,6 +28,21 @@ class $AssetsJsonGen {
 
   /// List of all assets
   List<String> get values => [marineAnimals];
+}
+
+class $AssetsImagesDemoGen {
+  const $AssetsImagesDemoGen();
+
+  /// File path: assets/images/demo/barrel.png
+  AssetGenImage get barrel =>
+      const AssetGenImage('assets/images/demo/barrel.png');
+
+  /// File path: assets/images/demo/bullet.png
+  AssetGenImage get bullet =>
+      const AssetGenImage('assets/images/demo/bullet.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [barrel, bullet];
 }
 
 class $AssetsImagesMarineAnimalsGen {
