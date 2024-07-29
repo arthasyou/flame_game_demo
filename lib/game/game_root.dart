@@ -45,14 +45,19 @@ class GameRoot extends FlameGame
   }
 
   @override
-  void onMouseMove(PointerHoverInfo info) {
-    // print("global: ${info.eventPosition.global}");
-    // print("widget: ${info.eventPosition.widget}");
-    // final a = cam.globalToLocal(info.eventPosition.global);
-    // print(a);
-
+  void onPanUpdate(DragUpdateInfo info) {
     world.cannon.rotateTowards(
       cam.globalToLocal(info.eventPosition.global),
-    ); // Rotate cannon towards mouse position
+    );
+    super.onPanUpdate(info);
   }
+
+  // @override
+  // void onMouseMove(PointerHoverInfo info) {
+  //   // print("global: ${info.eventPosition.global}");
+  //   // print("widget: ${info.eventPosition.widget}");
+  //   // final a = cam.globalToLocal(info.eventPosition.global);
+  //   // print(a);
+
+  // }
 }

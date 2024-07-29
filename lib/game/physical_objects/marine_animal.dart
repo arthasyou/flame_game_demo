@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_game_demo/game/game_root.dart';
 import 'package:flame_game_demo/utils/Bezier_Curves.dart';
@@ -56,6 +57,12 @@ class MarineAnimal extends SpriteAnimationGroupComponent
     await super.onLoad;
     await _loadAllAnimations();
     _setRandomTarget();
+    // 添加碰撞体
+    add(
+      RectangleHitbox(
+        collisionType: CollisionType.passive,
+      ),
+    );
   }
 
   @override
