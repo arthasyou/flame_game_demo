@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
@@ -6,8 +7,7 @@ import 'package:flame/src/gestures/events.dart';
 import 'package:flame_game_demo/constants.dart';
 import 'components/game_world.dart';
 
-class GameRoot extends FlameGame
-    with PanDetector, MouseMovementDetector, HasCollisionDetection {
+class GameRoot extends FlameGame with PanDetector, HasCollisionDetection {
   final GameWorld world = GameWorld();
   late CameraComponent cam;
 
@@ -28,6 +28,7 @@ class GameRoot extends FlameGame
       height: gameHeight,
     );
     cam.viewfinder.anchor = Anchor.center;
+    // cam.viewfinder.angle = pi;
 
     addAll([cam, world]);
   }
@@ -51,13 +52,4 @@ class GameRoot extends FlameGame
     );
     super.onPanUpdate(info);
   }
-
-  // @override
-  // void onMouseMove(PointerHoverInfo info) {
-  //   // print("global: ${info.eventPosition.global}");
-  //   // print("widget: ${info.eventPosition.widget}");
-  //   // final a = cam.globalToLocal(info.eventPosition.global);
-  //   // print(a);
-
-  // }
 }
