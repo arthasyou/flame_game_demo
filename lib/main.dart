@@ -1,5 +1,6 @@
 import 'package:flame/flame.dart';
 import 'package:flame_game_demo/boot.dart';
+import 'package:flame_game_demo/provider/jwt_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,7 +14,10 @@ void main() async {
   await boot();
 
   runApp(
-    const ProviderScope(
+    ProviderScope(
+      overrides: [
+        jwtProvider.overrideWith((ref) => "new-jwt-token"),
+      ],
       child: GameApp(),
     ),
   );

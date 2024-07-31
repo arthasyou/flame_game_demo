@@ -1,15 +1,24 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/src/gestures/events.dart';
 import 'package:flame_game_demo/constants.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../protos/message.pbserver.dart';
+import '../services/message_service.dart';
 import 'components/game_world.dart';
 
 class GameRoot extends FlameGame with PanDetector, HasCollisionDetection {
+  GameRoot({
+    required this.ref,
+    required this.messageService,
+  });
+
   final GameWorld world = GameWorld();
   late CameraComponent cam;
+  final MessageService messageService;
+  final WidgetRef ref; // hook_provie相关
 
   @override
   FutureOr<void> onLoad() async {
@@ -17,7 +26,6 @@ class GameRoot extends FlameGame with PanDetector, HasCollisionDetection {
     await images.loadAllImages();
 
     _loadWorld();
-
     return super.onLoad();
   }
 
@@ -35,6 +43,7 @@ class GameRoot extends FlameGame with PanDetector, HasCollisionDetection {
 
   @override
   void onPanStart(DragStartInfo info) {
+    messageService.sendMessage(ref, 1001, UserInfoArg());
     world.cannon.startShooting();
     super.onPanStart(info);
   }
@@ -51,5 +60,9 @@ class GameRoot extends FlameGame with PanDetector, HasCollisionDetection {
       cam.globalToLocal(info.eventPosition.global),
     );
     super.onPanUpdate(info);
+  }
+
+  void someFun() {
+    print("=======test============================================");
   }
 }

@@ -18,11 +18,19 @@ dependencies:
   hooks_riverpod: ^2.5.1
   xml: ^6.5.0
   lints: ^4.0.0
-  bezier: any
+  web_socket_channel: ^3.0.1
+  protobuf: ^3.1.0
+  intl: ^0.19.0
+  # bezier: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.11
+  riverpod_generator: ^2.4.0
+  riverpod_lint: ^2.3.10
+  custom_lint: ^0.6.4
  
 
 flutter:
