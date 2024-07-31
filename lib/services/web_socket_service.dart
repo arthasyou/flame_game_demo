@@ -60,9 +60,9 @@ class WebSocketNotifier extends ChangeNotifier {
           if (parsedMessage.errorCode == 0) {
             _messages.add(parsedMessage);
             notifyListeners();
-            if (kDebugMode) {
-              print('going recive========================');
-            }
+            // if (kDebugMode) {
+            //   print('going recive========================');
+            // }
           } else {
             if (kDebugMode) {
               print("error code: ${parsedMessage.errorCode}");

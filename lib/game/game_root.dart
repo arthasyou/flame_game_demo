@@ -22,11 +22,13 @@ class GameRoot extends FlameGame with PanDetector, HasCollisionDetection {
 
   @override
   FutureOr<void> onLoad() async {
+    await super.onLoad();
     images.prefix = '';
     await images.loadAllImages();
 
     _loadWorld();
-    return super.onLoad();
+
+    messageService.sendMessage(ref, 1001, UserInfoArg());
   }
 
   void _loadWorld() {
@@ -43,7 +45,6 @@ class GameRoot extends FlameGame with PanDetector, HasCollisionDetection {
 
   @override
   void onPanStart(DragStartInfo info) {
-    messageService.sendMessage(ref, 1001, UserInfoArg());
     world.cannon.startShooting();
     super.onPanStart(info);
   }

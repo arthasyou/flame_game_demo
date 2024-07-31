@@ -31,7 +31,7 @@ class MessageService {
   void onMessageReceived(WidgetRef ref) {
     final webSocketNotifier = ref.read(webSocketProvider);
 
-    _game?.someFun(); //
+    _game?.someFun();
 
     // final gameNotifier = ref.read(slotMachineProvider);
     if (webSocketNotifier.messages.isNotEmpty) {
@@ -40,14 +40,13 @@ class MessageService {
 
       try {
         final messageType = cmdToName(messageBytes.cmd);
-        _game?.someFun(); //
+
         print("messageType: $messageType");
         final message =
             _protoHandler.parseMessage(messageType, messageBytes.data);
         print(message);
         // _messageHandler.handle(message, gameNotifier);
         // Handle the parsed message
-        _game?.someFun(); // 调用GameRoot的someFun方法
       } catch (e) {
         print('Failed to parse message: $e');
       } finally {
