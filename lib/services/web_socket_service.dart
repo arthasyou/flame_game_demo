@@ -8,13 +8,11 @@ import '../provider/jwt_provider.dart';
 class WebSocketMessage {
   final int errorCode;
   final int cmd;
-  final int length;
   final Uint8List data;
 
   WebSocketMessage({
     required this.errorCode,
     required this.cmd,
-    required this.length,
     required this.data,
   });
 }
@@ -49,7 +47,8 @@ class WebSocketNotifier extends ChangeNotifier {
   void _connect() {
     _channel = WebSocketChannel.connect(
       // Uri.parse('wss://wap-v101-gtmservice.rosetts.com/ws/fruit?token=$jwt'),
-      Uri.parse('ws://127.0.0.1:8080'),
+      Uri.parse(
+          'ws://127.0.0.1:10301?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ0ZXN0Iiwic3ViIjoic3ViIiwiZXhwIjoxNzIzNDM1MTA1LCJpYXQiOjE3MjM0MzE1MDV9.JgY_9MLj3-JSg7Oadglz0-1jONqECSu-43GV6CeLd7w'),
     );
 
     _subscription = _channel.stream.listen(
@@ -85,7 +84,7 @@ class WebSocketNotifier extends ChangeNotifier {
   }
 
   void _sendHeartBeat() {
-    sendMessage(Uint8List.fromList([0]), 0, 0); // 示例心跳包
+    sendMessage(Uint8List.fromList([0]), 0); // 示例心跳包
   }
 
   void _onDone() {
@@ -118,12 +117,9 @@ class WebSocketNotifier extends ChangeNotifier {
     });
   }
 
-  void sendMessage(Uint8List data, int errorCode, int cmd) {
-    ByteData header = ByteData(6);
-    header.setUint16(0, errorCode, Endian.big);
-    header.setUint16(2, cmd, Endian.big);
-    header.setUint16(4, data.length, Endian.big);
-
+  void sendMessage(Uint8List data, int cmd) {
+    ByteData header = ByteData(2);
+    header.setUint16(0, cmd, Endian.big);
     Uint8List messageBytes = Uint8List(header.lengthInBytes + data.length);
     messageBytes.setRange(0, header.lengthInBytes, header.buffer.asUint8List());
     messageBytes.setRange(header.lengthInBytes, messageBytes.length, data);
@@ -131,24 +127,18 @@ class WebSocketNotifier extends ChangeNotifier {
   }
 
   WebSocketMessage _parseMessage(Uint8List data) {
-    if (data.length < 6) {
+    if (data.length < 4) {
       throw Exception('Invalid data length');
     }
 
     ByteData byteData = ByteData.sublistView(data);
     int errorCode = byteData.getUint16(0, Endian.big);
     int cmd = byteData.getUint16(2, Endian.big);
-    int length = byteData.getUint16(4, Endian.big);
-
-    if (data.length < 6 + length) {
-      throw Exception('Invalid data length');
-    }
 
     return WebSocketMessage(
       errorCode: errorCode,
       cmd: cmd,
-      length: length,
-      data: data.sublist(6, 6 + length),
+      data: data.sublist(4, data.length),
     );
   }
 

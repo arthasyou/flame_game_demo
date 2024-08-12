@@ -62,10 +62,8 @@ class MessageService {
     // 将消息序列化为字节数组
     Uint8List messageBody = Uint8List.fromList(message.writeToBuffer());
 
-    int errorCode = 0;
-
     // 发送消息
-    webSocketNotifier.sendMessage(messageBody, errorCode, cmd);
+    webSocketNotifier.sendMessage(messageBody, cmd);
   }
 }
 
